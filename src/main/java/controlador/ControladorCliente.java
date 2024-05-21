@@ -66,10 +66,10 @@ public class ControladorCliente {
             
             cs.execute();
             
-            JOptionPane.showMessageDialog(null, "Se incertó correctamente el alumno");
+            JOptionPane.showMessageDialog(null, "Se incertó correctamente el Cliente");
             
         }catch(Exception e){
-            JOptionPane.showMessageDialog(null, "No se incertó correctamente el alumno"+e.toString());
+            JOptionPane.showMessageDialog(null, "No se incertó correctamente el Cliente"+e.toString());
         }
     }
     
