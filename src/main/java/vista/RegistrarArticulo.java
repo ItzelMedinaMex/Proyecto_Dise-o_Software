@@ -18,6 +18,9 @@ public class RegistrarArticulo extends javax.swing.JPanel {
      */
     public RegistrarArticulo() {
         initComponents();
+        
+        ControladorArticulo cA=new ControladorArticulo();
+        cA.MostrarArticulos(tbTotalArticulo);
     }
 
     /**
@@ -176,7 +179,9 @@ public class RegistrarArticulo extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void guardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarActionPerformed
-        
+    ControladorArticulo cA=new ControladorArticulo();
+    cA.InsertarArticulo(id, nombre, precioPublico, precioProveedor, inventario);
+    cA.MostrarArticulos(tbTotalArticulo);
     }//GEN-LAST:event_guardarActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed

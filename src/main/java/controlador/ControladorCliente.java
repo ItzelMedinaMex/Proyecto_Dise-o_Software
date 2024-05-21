@@ -6,6 +6,7 @@ package controlador;
 import Conexion.Conexion;
 import java.sql.CallableStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
@@ -100,7 +101,7 @@ public class ControladorCliente {
         
         sql = "select * from Clientes;";
         
-        String[] datos = new String[11];
+        String[] datos = new String[12];
         Statement st;
         
         try{
@@ -128,5 +129,103 @@ public class ControladorCliente {
             JOptionPane.showMessageDialog(null, "No se pudo mostrar los registros"+e.toString());
         }
     }
+    public void SeleccionarCliente(JTable paramTablaClientes, JTextField paramId,JTextField paramNombres, JTextField paramApellidos, JTextField paramCalle, JTextField paramNumero, JTextField paramColonia, JTextField paramCp, JTextField paramEstado, JTextField paramCiudad, JTextField paramTelefono){
+        try{
+            int fila = paramTablaClientes.getSelectedRow();
+            if(fila>=0){
+                paramId.setText((paramTablaClientes.getValueAt(fila, 0).toString()));
+                paramNombres.setText((String) (paramTablaClientes.getValueAt(fila, 1)));
+                paramApellidos.setText((String) (paramTablaClientes.getValueAt(fila, 2)));
+                paramCalle.setText((String) (paramTablaClientes.getValueAt(fila, 3)));
+                paramNumero.setText((String) (paramTablaClientes.getValueAt(fila, 4)));
+                paramColonia.setText((String) (paramTablaClientes.getValueAt(fila, 5)));
+                paramCp.setText((String) (paramTablaClientes.getValueAt(fila, 6)));
+                paramEstado.setText((String) (paramTablaClientes.getValueAt(fila, 7)));
+                paramCiudad.setText((String) (paramTablaClientes.getValueAt(fila, 8)));
+                paramTelefono.setText((paramTablaClientes.getValueAt(fila, 9).toString()));
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "Fila no seleccionada");
+            }
+        }catch(Exception e){
+            JOptionPane.showMessageDialog(null, "Error de selección"+e.toString());
+        }
+    }
     
+    
+    public void ModificarCliente(JTextField paramId,JTextField paramNombres, JTextField paramApellidos,JTextField paramCalle, JTextField paramNumero,JTextField paramColonia, JTextField paramCp, JTextField paramEstado, JTextField paramCiudad, JTextField paramTelefono) {
+    
+        Cliente varCliente = new Cliente();
+        Direccion varDireccion = new Direccion();
+        
+        int id = Integer.parseInt(paramId.getText());
+        varCliente.setId(id);
+        
+        varCliente.setNombreCliente(paramNombres.getText());
+        varCliente.setApellidoPaterno(paramApellidos.getText());
+        
+        varDireccion.setCalle(paramCalle.getText());
+        
+        int numero = Integer.parseInt(paramNumero.getText());
+        varDireccion.setNumero(numero);
+        
+        varDireccion.setColonia(paramColonia.getText());
+        
+        int cp = Integer.parseInt(paramCp.getText());
+        varDireccion.setCp(cp);
+        
+        varDireccion.setEstado(paramEstado.getText());
+        
+        varDireccion.setCiudad(paramCiudad.getText());
+        
+        Long telefono = Long.parseLong(paramTelefono.getText());
+        varDireccion.setTelefono(telefono);
+        
+
+    Conexion objetoConexion = new Conexion();
+
+    String consulta = "UPDATE Clientes SET  clientes.nombres =   ?, clientes.apellidos = ?,  clientes.calle =   ?, clientes.numero = ?, clientes.colonia =  ?, clientes.cp = ?, clientes.estado = ?,  clientes.ciudad = ?, clientes.telefono = ? WHERE clientes.id = ?;";
+
+    try {
+        CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
+        //cs.setInt(1, varCliente.getId());
+        cs.setString(1, varCliente.getNombreCliente());
+        cs.setString(2, varCliente.getApellidoPaterno());
+            
+        cs.setString(3, varDireccion.getCalle());
+        cs.setInt(4, varDireccion.getNumero());
+        cs.setString(5, varDireccion.getColonia());
+        cs.setInt(6, varDireccion.getCp());
+        cs.setString(7, varDireccion.getEstado());
+        cs.setString(8, varDireccion.getCiudad());
+        cs.setLong(9, (long) varDireccion.getTelefono());
+        cs.setInt(10, varCliente.getId());
+        cs.execute();
+
+        JOptionPane.showMessageDialog(null, "Modificación exitosa");
+
+        } catch (SQLException e) {
+            JOptionPane.showMessageDialog(null, "No se modificó, error" + e.toString());
+        }
+    }
+    public void EliminarClientes(JTextField paramId) throws SQLException{
+        
+        int id = Integer.parseInt(paramId.getText());
+         Cliente varCliente = new Cliente();
+        varCliente.setId(id);
+        
+        Conexion objetoConexion = new Conexion();
+        
+        String consulta ="DELETE FROM Clientes WHERE clientes.id=?;";
+        
+        try{
+            CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
+            cs.setInt(1, varCliente.getId());
+            cs.execute();
+            JOptionPane.showMessageDialog(null, "Se eliminó correctamente el cliente");
+            
+        }catch(SQLException e){
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar, error"+e.toString());
+        }
+    }
 }

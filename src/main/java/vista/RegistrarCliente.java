@@ -6,6 +6,10 @@ package vista;
 
 import modelo.Cliente;
 import controlador.ControladorCliente;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import modelo.Clientes;
 
  
 public class RegistrarCliente extends javax.swing.JPanel {
@@ -258,6 +262,11 @@ public class RegistrarCliente extends javax.swing.JPanel {
 
             }
         ));
+        tbTotalClientes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbTotalClientesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbTotalClientes);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -293,23 +302,36 @@ public class RegistrarCliente extends javax.swing.JPanel {
     }//GEN-LAST:event_txtNombresActionPerformed
 
     private void botonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonGuardarActionPerformed
-        Cliente c = new Cliente();
+        
         ControladorCliente cC = new ControladorCliente();
         cC.InsertarCliente(txtID, txtNombres, txtApellidos, calle, numero, colonia, cp, estado, ciudad, telefono);
         cC.MostrarClientes(tbTotalClientes);
     }//GEN-LAST:event_botonGuardarActionPerformed
 
     private void botonModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonModificarActionPerformed
-        
+        ControladorCliente cC= new ControladorCliente();
+        cC.ModificarCliente(txtID, txtNombres, txtApellidos, calle, numero, colonia, cp, estado, ciudad, telefono);
+        cC.MostrarClientes(tbTotalClientes);
     }//GEN-LAST:event_botonModificarActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-    
+        ControladorCliente cC= new ControladorCliente();
+        try {
+            cC.EliminarClientes(txtID);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cC.MostrarClientes(tbTotalClientes);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void calleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_calleActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_calleActionPerformed
+
+    private void tbTotalClientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTotalClientesMouseClicked
+        ControladorCliente cC= new ControladorCliente();
+        cC.SeleccionarCliente(tbTotalClientes, txtID, txtNombres, txtApellidos, calle, numero, colonia, cp, estado, ciudad, telefono);
+    }//GEN-LAST:event_tbTotalClientesMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

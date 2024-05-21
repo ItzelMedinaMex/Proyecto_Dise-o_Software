@@ -57,14 +57,4 @@ public class Articulo {
     public void setPrecioProveedor(double precioProveedor) {
         this.precioProveedor = precioProveedor;
     }
-
-    public void InsertarArticulo(JTextField id, JTextField nombre, JTextField precioPublico, JTextField precioProveedor, JTextField inventario) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void MostrarArticulos(JTable tbTotalArticulo) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-    
-    
 }

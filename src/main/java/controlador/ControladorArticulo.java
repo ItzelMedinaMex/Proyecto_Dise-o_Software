@@ -20,24 +20,25 @@ import modelo.Articulo;
  *
  * @author BLANC-ITZ
  */
-public class ControladorArticulo extends Articulo {
+public class ControladorArticulo{
     
     public void InsertarArticulo(JTextField paramId,JTextField paramNombres, JTextField paramPrecioPublico, JTextField paramPrecioProveedor, JTextField paramInventario){
         
+       Articulo a = new Articulo();
        
         int id = Integer.parseInt(paramId.getText());
-        setId(id);
+        a.setId(id);
         
-        setNombres(paramNombres.getText());
+        a.setNombres(paramNombres.getText());
         
         double precioPublico = Double.parseDouble(paramPrecioPublico.getText());
-        setPrecioPublico(precioPublico);
+        a.setPrecioPublico(precioPublico);
         
         double precioProveedor = Double.parseDouble(paramPrecioProveedor.getText());
-        setPrecioProveedor(precioProveedor);
+        a.setPrecioProveedor(precioProveedor);
         
         int inventario= Integer.parseInt(paramInventario.getText());
-        
+        a.setInventario(inventario);
         
         
         Conexion objetoConexion = new Conexion();
@@ -47,7 +48,7 @@ public class ControladorArticulo extends Articulo {
             CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
             
             cs.setInt(1, id);
-            cs.setString(2, getNombres());
+            cs.setString(2, a.getNombres());
             cs.setDouble(3, precioPublico);
             cs.setDouble(4, precioProveedor);
             cs.setInt(5, inventario);
@@ -81,7 +82,7 @@ public class ControladorArticulo extends Articulo {
         
         sql = "select * from articulos;";
         
-        String[] datos = new String[7];
+        String[] datos = new String[6];
         Statement st;
         
         try{
