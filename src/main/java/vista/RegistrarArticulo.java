@@ -6,6 +6,9 @@ package vista;
 
 import modelo.Articulo;
 import controlador.ControladorArticulo;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -185,15 +188,25 @@ public class RegistrarArticulo extends javax.swing.JPanel {
     }//GEN-LAST:event_guardarActionPerformed
 
     private void modificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modificarActionPerformed
-       
+    ControladorArticulo cA=new ControladorArticulo();
+    cA.ModificarArticulo(id, nombre, precioPublico, precioProveedor, inventario);
+    cA.MostrarArticulos(tbTotalArticulo);
     }//GEN-LAST:event_modificarActionPerformed
 
     private void eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_eliminarActionPerformed
-        
+    ControladorArticulo cA=new ControladorArticulo();
+    
+        try {
+            cA.EliminarArticulo(id);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistrarCliente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cA.MostrarArticulos(tbTotalArticulo);
     }//GEN-LAST:event_eliminarActionPerformed
 
     private void tbTotalArticuloMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbTotalArticuloMouseClicked
-        
+    ControladorArticulo cA=new ControladorArticulo();
+    cA.SeleccionarArticulo(tbTotalArticulo, id, nombre, precioPublico, precioProveedor, inventario);
     }//GEN-LAST:event_tbTotalArticuloMouseClicked
 
     private void idActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_idActionPerformed
