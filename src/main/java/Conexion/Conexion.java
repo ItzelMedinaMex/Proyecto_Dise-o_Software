@@ -41,4 +41,15 @@ public class Conexion {
         }
          return conectar;
     }
+    
+    //conexion local
+    public static Connection conectar() {
+        try {
+            Connection cn = DriverManager.getConnection("jdbc:mysql://localhost/bdabarrotes_tizimin", "root", "BTStuspatrones03@");
+            return cn;
+        } catch (SQLException e) {
+            System.out.println("Error en la conexion local " + e);
+        }
+        return null;
+    }
 }
