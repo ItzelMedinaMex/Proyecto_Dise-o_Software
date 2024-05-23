@@ -65,6 +65,7 @@ public class DetalleVenta {
         return idProducto;
     }
 
+    
     public void setIdProducto(int idProducto) {
         this.idProducto = idProducto;
     }

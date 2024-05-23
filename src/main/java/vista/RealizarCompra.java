@@ -581,7 +581,7 @@ int idArrayList=0;
     }
     
     //Metodo para restar la cantidaad (inventario) de los productos vendidos
-    private void RestarStockProductos(int idArticulo, int CantidadValor){
+    private void RestarStockProductos(int idArticulo, int cantidadValor){
         int cantidadProductosBaseDeDatos = 0;
         try {
             Connection cn = Conexion.conectar();
