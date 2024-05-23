@@ -48,7 +48,7 @@ public class ControladorCliente {
         
         
         Conexion objetoConexion = new Conexion();
-        String consulta = ("insert into Clientes (id, nombres, apellidos, calle, numero, colonia, cp,estado, ciudad,  telefono) values (?, ?, ?, ?, ?, ?, ?,?, ?, ?);");
+        String consulta = ("insert into Clientes (idCliente, nombres, apellidos, calle, numero, colonia, cp,estado, ciudad,  telefono) values (?, ?, ?, ?, ?, ?, ?,?, ?, ?);");
         
         try{
             CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
@@ -184,7 +184,7 @@ public class ControladorCliente {
 
     Conexion objetoConexion = new Conexion();
 
-    String consulta = "UPDATE Clientes SET  clientes.nombres =   ?, clientes.apellidos = ?,  clientes.calle =   ?, clientes.numero = ?, clientes.colonia =  ?, clientes.cp = ?, clientes.estado = ?,  clientes.ciudad = ?, clientes.telefono = ? WHERE clientes.id = ?;";
+    String consulta = "UPDATE Clientes SET  clientes.nombres =   ?, clientes.apellidos = ?,  clientes.calle =   ?, clientes.numero = ?, clientes.colonia =  ?, clientes.cp = ?, clientes.estado = ?,  clientes.ciudad = ?, clientes.telefono = ? WHERE clientes.idCliente = ?;";
 
     try {
         CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
@@ -216,7 +216,7 @@ public class ControladorCliente {
         
         Conexion objetoConexion = new Conexion();
         
-        String consulta ="DELETE FROM Clientes WHERE clientes.id=?;";
+        String consulta ="DELETE FROM Clientes WHERE clientes.idCliente=?;";
         
         try{
             CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);

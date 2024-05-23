@@ -43,7 +43,7 @@ public class ControladorArticulo{
         
         
         Conexion objetoConexion = new Conexion();
-        String consulta = ("insert into articulos (id, nombres, precioPublico, precioProveedor, inventario) values (?, ?, ?, ?, ?);");
+        String consulta = ("insert into articulos (idArticulo, nombresArticulos, precioPublico, precioProveedor, inventario) values (?, ?, ?, ?, ?);");
         
         try{
             CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
@@ -144,7 +144,7 @@ public class ControladorArticulo{
         a.setInventario(inventario);
 
         Conexion objetoConexion = new Conexion();
-        String consulta = "UPDATE articulos SET id = ?, nombres = ?, precioPublico = ?, precioProveedor = ?, inventario = ? WHERE id = ?;";
+        String consulta = "UPDATE articulos SET idArticulo = ?, nombresArticulos = ?, precioPublico = ?, precioProveedor = ?, inventario = ? WHERE idArticulo = ?;";
 
         try {
             CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
@@ -169,7 +169,7 @@ public class ControladorArticulo{
         
         Conexion objetoConexion = new Conexion();
         
-        String consulta ="DELETE FROM articulos WHERE articulos.id=?;";
+        String consulta ="DELETE FROM articulos WHERE articulos.idArticulo=?;";
         
         try{
             CallableStatement cs = objetoConexion.estableceConexion().prepareCall(consulta);
@@ -181,5 +181,6 @@ public class ControladorArticulo{
             JOptionPane.showMessageDialog(null, "No se pudo eliminar, error"+e.toString());
         }
     }
+    
     
 }

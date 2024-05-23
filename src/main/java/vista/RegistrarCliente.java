@@ -357,7 +357,7 @@ public class RegistrarCliente extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField numero;
-    private javax.swing.JTable tbTotalClientes;
+    public static javax.swing.JTable tbTotalClientes;
     private javax.swing.JTextField telefono;
     private javax.swing.JTextField txtApellidos;
     private javax.swing.JTextField txtID;
