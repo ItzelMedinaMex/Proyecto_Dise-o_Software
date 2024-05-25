@@ -61,8 +61,10 @@ public class RegistrarCliente extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
         tbTotalClientes = new javax.swing.JTable();
 
+        setBackground(new java.awt.Color(255, 102, 102));
         setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
+        jPanel1.setBackground(new java.awt.Color(255, 102, 102));
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Datos del usuario"));
 
         jLabel2.setText("ID:");
@@ -96,6 +98,8 @@ public class RegistrarCliente extends javax.swing.JPanel {
                 jButton3ActionPerformed(evt);
             }
         });
+
+        jPanel2.setBackground(new java.awt.Color(255, 102, 102));
 
         jLabel5.setText("Calle:");
 

@@ -15,10 +15,11 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Cliente;
+import modelo.Clientes;
 import modelo.Direccion;
 
 
-public class ControladorCliente {
+public class ControladorCliente implements Clientes {
     public void InsertarCliente(JTextField paramId,JTextField paramNombres, JTextField paramApellidos, JTextField paramCalle, JTextField paramNumero, JTextField paramColonia, JTextField paramCp, JTextField paramEstado, JTextField paramCiudad, JTextField paramTelefono){
         Cliente varCliente = new Cliente();
         Direccion varDireccion = new Direccion();

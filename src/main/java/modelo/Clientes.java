@@ -4,10 +4,15 @@
  */
 package modelo;
 
+import java.sql.SQLException;
+import javax.swing.JTextField;
+
 /**
  *
  * @author BLANC-ITZ
  */
 public interface Clientes {
-    
+    public void InsertarCliente(JTextField paramId,JTextField paramNombres, JTextField paramApellidos, JTextField paramCalle, JTextField paramNumero, JTextField paramColonia, JTextField paramCp, JTextField paramEstado, JTextField paramCiudad, JTextField paramTelefono);
+    public void ModificarCliente(JTextField paramId,JTextField paramNombres, JTextField paramApellidos,JTextField paramCalle, JTextField paramNumero,JTextField paramColonia, JTextField paramCp, JTextField paramEstado, JTextField paramCiudad, JTextField paramTelefono);
+    public void EliminarClientes(JTextField paramId) throws SQLException;
 }

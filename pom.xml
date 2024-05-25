@@ -16,6 +16,16 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.28</version>
         </dependency>
+        <dependency>
+            <groupId>jcalendar-1.4</groupId>
+            <artifactId>DDR-library</artifactId>
+            <version>1.4</version>
+        </dependency>
+        <dependency>
+            <groupId>itext5-itextpdf-5.5.12</groupId>
+            <artifactId>DDR_library_pdf</artifactId>
+            <version>5.5.12</version>
+        </dependency>
     </dependencies>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

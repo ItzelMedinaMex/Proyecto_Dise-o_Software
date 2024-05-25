@@ -16,12 +16,13 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import modelo.Articulo;
+import modelo.Articulos;
 
 /**
  *
  * @author BLANC-ITZ
  */
-public class ControladorArticulo{
+public class ControladorArticulo implements Articulos{
     
     public void InsertarArticulo(JTextField paramId,JTextField paramNombres, JTextField paramPrecioPublico, JTextField paramPrecioProveedor, JTextField paramInventario){
         
