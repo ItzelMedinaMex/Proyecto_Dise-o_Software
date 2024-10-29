@@ -8,7 +8,7 @@
 
 ## Descripción
 
-Abarrotes Tizimin es un software de ventas desarrollado en Java y JavaFX para la gestión de ventas en tiendas de abarrotes. Este proyecto ha sido creado como parte de un proyecto escolar y tiene como objetivo facilitar la administración de inventarios, ventas y clientes en una tienda de abarrotes.
+Abarrotes Tizimin es un software de ventas desarrollado en Java y JavaSwing para la gestión de ventas en tiendas de abarrotes. Este proyecto ha sido creado como parte de un proyecto escolar y tiene como objetivo facilitar la administración de inventarios, ventas y clientes en una tienda de abarrotes.
 
 ## Características
 
